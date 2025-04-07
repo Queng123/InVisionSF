@@ -9,16 +9,16 @@ import SwiftUI
 
 @main
 struct AppleVision_SFApp: App {
-    
-    @State private var avPlayerViewModel = AVPlayerViewModel()
-    
+    @State private var videoManager = ImmersiveVideoManager.shared
     var body: some Scene {
         WindowGroup {
-            if avPlayerViewModel.isPlaying {
-                AVPlayerView(viewModel: avPlayerViewModel)
-            } else {
-                ContentView()
-            }
+            ContentView()
         }.defaultSize(CGSize(width: 2000, height: 1500))
+        
+        ImmersiveSpace(id: "videoImmersive") {
+            if let selected = videoManager.selectedVideo {
+                ImmersiveVideoView(videoName: selected)
+            }
+        }
     }
 }

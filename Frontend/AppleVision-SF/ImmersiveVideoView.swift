@@ -2,33 +2,50 @@
 //  ImmersiveVideoView.swift
 //  AppleVision-SF
 //
-//  Created by Noah tesson on 12/11/24.
+//  Created by Quentin Brejoin on 4/6/25.
 //
 
 import SwiftUI
 import RealityKit
-import AVKit
-import RealityKitContent
+import AVFoundation
 
 struct ImmersiveVideoView: View {
-    let videoURL: URL
+    var videoName: String
+    @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
 
     var body: some View {
-        VideoPlayerView(videoURL: videoURL)
+        RealityView { content in
+            guard let url = Bundle.main.url(forResource: videoName, withExtension: "mov") else {
+                print("Vidéo non trouvée")
+                return
+            }
+
+            let player = AVPlayer(url: url)
+            let material = VideoMaterial(avPlayer: player)
+
+            let sphere = ModelEntity(mesh: .generateSphere(radius: 5))
+            sphere.model?.materials = [material]
+            sphere.scale = [-1, 1, 1] // Pour projeter à l’intérieur
+
+            let anchor = AnchorEntity(world: .zero)
+            anchor.addChild(sphere)
+            content.add(anchor)
+
+            player.play()
+        } update: { content in
+            // Si besoin d'update le contenu
+        }
+        .overlay(alignment: .topTrailing) {
+            Button("Fermer") {
+                Task {
+                    await dismissImmersiveSpace()
+                }
+            }
+            .padding()
+            .background(Color.white.opacity(0.7))
+            .cornerRadius(8)
+        }.onAppear {
+            print("ImmersiveVideoView apparue avec la vidéo: \(videoName)")
+        }
     }
-}
-
-struct VideoPlayerView: UIViewControllerRepresentable {
-    let videoURL: URL
-
-    func makeUIViewController(context: Context) -> AVPlayerViewController {
-        let player = AVPlayer(url: videoURL)
-        let controller = AVPlayerViewController()
-        controller.player = player
-        controller.showsPlaybackControls = true
-        player.play()
-        return controller
-    }
-
-    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {}
 }

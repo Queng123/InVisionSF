@@ -17,9 +17,11 @@ struct EventDetailOverlay: View {
     let onClose: () -> Void
     var selectedEvent: Event?
 
+    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     
     @State private var isVideoPlaying = false
     @State private var videoPlayer: AVPlayer?
+    @State private var selectedVideoName: String? = nil
 
     @State private var lookaroundScene: MKLookAroundScene?
     
@@ -81,7 +83,16 @@ struct EventDetailOverlay: View {
                             ContentUnavailableView("No preview available", systemImage: "eye.slash")
                         }
                         Button(action: {
-                            playSpatialVideo(event.spacialVideoLink)
+                            ImmersiveVideoManager.shared.selectedVideo = event.spacialVideoLink
+                            Task {
+                                do {
+                                    print("🎯 Attempting to open immersive space")
+                                    try await openImmersiveSpace(id: "videoImmersive")
+                                    print("✅ Immersive space opened")
+                                } catch {
+                                    print("❌ Error opening immersive space: \(error)")
+                                }
+                            }
                         }) {
                             Text("Play spatial video")
                                 .font(.headline)
@@ -114,32 +125,11 @@ struct EventDetailOverlay: View {
                         .cornerRadius(10)
                 }
                 .padding()
+                
             }
             .task {
                 await fetchLookaroundPreview()
             }
-        }
-    }
-    
-    private func playSpatialVideo(_ spatialVideoLink: String) {
-        guard let videoURL = Bundle.main.url(forResource: spatialVideoLink, withExtension: "MOV") else {
-            print("Video file not found.")
-            return
-        }
-
-        // Initialize AVPlayer
-        videoPlayer = AVPlayer(url: videoURL)
-        
-        // Create an AVPlayerViewController for playback
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = videoPlayer
-        
-        // Present in a VisionOS environment
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            let hostingController = UIHostingController(rootView: PlayerView(player: videoPlayer!))
-            windowScene.windows.first?.rootViewController?.present(hostingController, animated: true, completion: {
-                videoPlayer?.play()
-            })
         }
     }
     

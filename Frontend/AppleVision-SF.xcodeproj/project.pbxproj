@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64324F112D8A3D5400F3E5DA /* OpenImmersiveLib in Frameworks */ = {isa = PBXBuildFile; productRef = 64324F102D8A3D5400F3E5DA /* OpenImmersiveLib */; };
 		CD04DD792D0A6B1C00A44828 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = CD04DD782D0A6B1C00A44828 /* RealityKitContent */; };
 /* End PBXBuildFile section */
 
@@ -25,11 +26,22 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		64020C352DA058680005418E /* Exceptions for "AppleVision-SF" folder in "Compile Sources" phase from "AppleVision-SF" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = CD04DD6F2D0A6B1C00A44828 /* Sources */;
+			membershipExceptions = (
+				IMG_7210.MOV,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CD04DD752D0A6B1C00A44828 /* AppleVision-SF */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				CD04DD8E2D0A6B1D00A44828 /* Exceptions for "AppleVision-SF" folder in "AppleVision-SF" target */,
+				64020C352DA058680005418E /* Exceptions for "AppleVision-SF" folder in "Compile Sources" phase from "AppleVision-SF" target */,
 			);
 			path = "AppleVision-SF";
 			sourceTree = "<group>";
@@ -41,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64324F112D8A3D5400F3E5DA /* OpenImmersiveLib in Frameworks */,
 				CD04DD792D0A6B1C00A44828 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +107,7 @@
 			name = "AppleVision-SF";
 			packageProductDependencies = (
 				CD04DD782D0A6B1C00A44828 /* RealityKitContent */,
+				64324F102D8A3D5400F3E5DA /* OpenImmersiveLib */,
 			);
 			productName = "AppleVision-SF";
 			productReference = CD04DD732D0A6B1C00A44828 /* AppleVision-SF.app */;
@@ -123,6 +137,9 @@
 			);
 			mainGroup = CD04DD6A2D0A6B1C00A44828;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				64324F0F2D8A3D5400F3E5DA /* XCRemoteSwiftPackageReference "openimmersivelib" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CD04DD742D0A6B1C00A44828 /* Products */;
 			projectDirPath = "";
@@ -348,7 +365,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		64324F0F2D8A3D5400F3E5DA /* XCRemoteSwiftPackageReference "openimmersivelib" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/acuteimmersive/openimmersivelib";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		64324F102D8A3D5400F3E5DA /* OpenImmersiveLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64324F0F2D8A3D5400F3E5DA /* XCRemoteSwiftPackageReference "openimmersivelib" */;
+			productName = OpenImmersiveLib;
+		};
 		CD04DD782D0A6B1C00A44828 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
