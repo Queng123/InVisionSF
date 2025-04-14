@@ -26,22 +26,11 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		64020C352DA058680005418E /* Exceptions for "AppleVision-SF" folder in "Compile Sources" phase from "AppleVision-SF" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = CD04DD6F2D0A6B1C00A44828 /* Sources */;
-			membershipExceptions = (
-				IMG_7210.MOV,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CD04DD752D0A6B1C00A44828 /* AppleVision-SF */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				CD04DD8E2D0A6B1D00A44828 /* Exceptions for "AppleVision-SF" folder in "AppleVision-SF" target */,
-				64020C352DA058680005418E /* Exceptions for "AppleVision-SF" folder in "Compile Sources" phase from "AppleVision-SF" target */,
 			);
 			path = "AppleVision-SF";
 			sourceTree = "<group>";

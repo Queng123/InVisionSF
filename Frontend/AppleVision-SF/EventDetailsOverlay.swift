@@ -83,15 +83,10 @@ struct EventDetailOverlay: View {
                             ContentUnavailableView("No preview available", systemImage: "eye.slash")
                         }
                         Button(action: {
-                            ImmersiveVideoManager.shared.selectedVideo = event.spacialVideoLink
-                            Task {
-                                do {
-                                    print("🎯 Attempting to open immersive space")
-                                    try await openImmersiveSpace(id: "videoImmersive")
-                                    print("✅ Immersive space opened")
-                                } catch {
-                                    print("❌ Error opening immersive space: \(error)")
-                                }
+                            if let fileURL = Bundle.main.url(forResource: event.spacialVideoLink, withExtension: "mov") {
+                                _ = PreviewApplication.open(urls: [fileURL])
+                            } else {
+                                print("Could not find file: \(event.spacialVideoLink)")
                             }
                         }) {
                             Text("Play spatial video")
