@@ -7,8 +7,6 @@
 
 import SwiftUI
 import MapKit
-import AVKit
-import RealityKit
 
 import QuickLook
 
@@ -17,9 +15,10 @@ struct EventDetailOverlay: View {
     let onClose: () -> Void
     var selectedEvent: Event?
 
+    @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     
     @State private var isVideoPlaying = false
-    @State private var videoPlayer: AVPlayer?
+    @State private var selectedVideoName: String? = nil
 
     @State private var lookaroundScene: MKLookAroundScene?
     
@@ -81,7 +80,12 @@ struct EventDetailOverlay: View {
                             ContentUnavailableView("No preview available", systemImage: "eye.slash")
                         }
                         Button(action: {
-                            playSpatialVideo(event.spacialVideoLink)
+                            if let fileURL = Bundle.main.url(forResource: event.spacialVideoLink, withExtension: "mov") {
+                                let previewItem = PreviewItem(url: fileURL, displayName: event.title, editingMode: .disabled)
+                                _ = PreviewApplication.open(items: [previewItem])
+                            } else {
+                                print("Could not find file: \(event.spacialVideoLink)")
+                            }
                         }) {
                             Text("Play spatial video")
                                 .font(.headline)
@@ -93,10 +97,6 @@ struct EventDetailOverlay: View {
                         }
 
                     }
-                    .onDisappear {
-                       // Stop video when the view disappears
-                       videoPlayer?.pause()
-                   }
                 }
                 .frame(width: 1000, height: 800)
                 .padding()
@@ -114,32 +114,11 @@ struct EventDetailOverlay: View {
                         .cornerRadius(10)
                 }
                 .padding()
+                
             }
             .task {
                 await fetchLookaroundPreview()
             }
-        }
-    }
-    
-    private func playSpatialVideo(_ spatialVideoLink: String) {
-        guard let videoURL = Bundle.main.url(forResource: spatialVideoLink, withExtension: "MOV") else {
-            print("Video file not found.")
-            return
-        }
-
-        // Initialize AVPlayer
-        videoPlayer = AVPlayer(url: videoURL)
-        
-        // Create an AVPlayerViewController for playback
-        let playerViewController = AVPlayerViewController()
-        playerViewController.player = videoPlayer
-        
-        // Present in a VisionOS environment
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-            let hostingController = UIHostingController(rootView: PlayerView(player: videoPlayer!))
-            windowScene.windows.first?.rootViewController?.present(hostingController, animated: true, completion: {
-                videoPlayer?.play()
-            })
         }
     }
     
@@ -154,17 +133,4 @@ struct EventDetailOverlay: View {
             }
         }
     }
-}
-
-struct PlayerView: UIViewControllerRepresentable {
-    let player: AVPlayer
-
-    func makeUIViewController(context: Context) -> AVPlayerViewController {
-        let controller = AVPlayerViewController()
-        controller.player = player
-        controller.showsPlaybackControls = true
-        return controller
-    }
-
-    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {}
 }

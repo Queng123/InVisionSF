@@ -9,16 +9,9 @@ import SwiftUI
 
 @main
 struct AppleVision_SFApp: App {
-    
-    @State private var avPlayerViewModel = AVPlayerViewModel()
-    
     var body: some Scene {
         WindowGroup {
-            if avPlayerViewModel.isPlaying {
-                AVPlayerView(viewModel: avPlayerViewModel)
-            } else {
-                ContentView()
-            }
+            ContentView()
         }.defaultSize(CGSize(width: 2000, height: 1500))
     }
 }
