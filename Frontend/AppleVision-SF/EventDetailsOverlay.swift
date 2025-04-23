@@ -26,7 +26,6 @@ struct EventDetailOverlay: View {
     init(event: Event, onClose: @escaping () -> Void) {
             self.event = event
             self.onClose = onClose
-            //print("Event Details: \(event)")
         }
     
     var body: some View {
@@ -71,7 +70,6 @@ struct EventDetailOverlay: View {
                     }
                     .padding()
                     VStack{
-                        // Street View
                         if let lookaroundScene {
                             LookAroundPreview(initialScene: lookaroundScene)
                                 .frame( width: 400, height: 200)
@@ -80,11 +78,16 @@ struct EventDetailOverlay: View {
                             ContentUnavailableView("No preview available", systemImage: "eye.slash")
                         }
                         Button(action: {
-                            if let fileURL = Bundle.main.url(forResource: event.spacialVideoLink, withExtension: "mov") {
-                                let previewItem = PreviewItem(url: fileURL, displayName: event.title, editingMode: .disabled)
-                                _ = PreviewApplication.open(items: [previewItem])
-                            } else {
-                                print("Could not find file: \(event.spacialVideoLink)")
+                            if let url = URL(string: event.spacialVideoLink) {
+                                let fileName = url.deletingPathExtension().lastPathComponent
+                                let fileExtension = url.pathExtension
+                                
+                                if let fileURL = Bundle.main.url(forResource: fileName, withExtension: fileExtension) {
+                                    let previewItem = PreviewItem(url: fileURL, displayName: event.title, editingMode: .disabled)
+                                    _ = PreviewApplication.open(items: [previewItem])
+                                } else {
+                                    print("Could not find file: \(event.spacialVideoLink)")
+                                }
                             }
                         }) {
                             Text("Play spatial video")
