@@ -61,7 +61,7 @@ struct EventDetailOverlay: View {
                                     UIApplication.shared.open(url)
                                 }
                             }) {
-                                Text("Buy tickets here!")
+                                Text("More informations here!")
                                     .padding()
                                     .background(Color.blue)
                                     .foregroundColor(.white)
@@ -78,7 +78,7 @@ struct EventDetailOverlay: View {
                             ContentUnavailableView("No preview available", systemImage: "eye.slash")
                         }
                         Button(action: {
-                            if let url = URL(string: event.spacialVideoLink) {
+                            if let url = URL(string: "./Ressources/" + event.spacialVideoLink) {
                                 let fileName = url.deletingPathExtension().lastPathComponent
                                 let fileExtension = url.pathExtension
                                 
