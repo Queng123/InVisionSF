@@ -228,5 +228,3 @@ struct EventData {
         ]
     }
 }
-
-// Event List: Chase Center, Gyro King, Chinese New Year Parade, icafe Bakery, San Patrick Parade, Cherry Blossom Festival, Matterhorn Restaurant, 16 av tiled steps, Palace of Fine Arts, Yoda Fontain, Letterman Digital Arts Center Recycled Water Pond, Starbucks Letterman Digital Arts Center, Farmers Market, Embarcadero Muni Station, Arsicault Bakery
