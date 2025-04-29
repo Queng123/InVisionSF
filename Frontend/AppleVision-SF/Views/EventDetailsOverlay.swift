@@ -45,19 +45,24 @@ struct EventDetailOverlay: View {
                             .padding()
                         
                         
-                        Text("Location: \(event.location)")
-                            .font(.headline)
-                            .padding(.bottom, 2)
+                        if !event.location.isEmpty {
+                            Text("Location: \(event.location)")
+                                .font(.headline)
+                                .padding(.bottom, 2)
+                        }
                         
-                        Text("Date: \(event.date)")
-                            .font(.subheadline)
-                            .padding(.bottom, 10)
+                        if !event.date.isEmpty {
+                            Text("Date: \(event.date)")
+                                .font(.subheadline)
+                                .padding(.bottom, 10)
+                        }
                         
                         Text(event.description)
                             .font(.body)
                             .padding()
-                        Button(action: {
-                            if let url = URL(string: event.ticketLink) {
+                        if !event.ticketLink.isEmpty {
+                            Button(action: {
+                                if let url = URL(string: event.ticketLink) {
                                     UIApplication.shared.open(url)
                                 }
                             }) {
@@ -67,6 +72,7 @@ struct EventDetailOverlay: View {
                                     .foregroundColor(.white)
                                     .cornerRadius(8)
                             }
+                        }
                     }
                     .padding()
                     VStack{
