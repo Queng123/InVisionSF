@@ -262,7 +262,7 @@ struct EventData {
                     location: "88 Colin P Kelly Jr St, San Francisco, CA  94107",
                     description: "​You probably already know that AI is changing the world. Come learn about some of the awesome AI dev tools being worked on.",
                     ticketLink: "https://lu.ma/856ufska?tk=2gPkVv",
-                    date: "",
+                    date: "19 may 2025",
                     spacialVideoLink: "github.MOV",
                     mapInfo: Event.MapInfo(
                         imageMarker: "pin",
@@ -270,6 +270,36 @@ struct EventData {
                         coordinates: CLLocationCoordinate2D(
                             latitude: 37.782180,
                             longitude: -122.391276
+                        )
+                    )),
+            
+            Event(title: "Golden Gate bridge",
+                    location: "Golden Gate Bridge, San Francisco CA",
+                    description: "​The Golden Gate Bridge is a suspension bridge spanning the Golden Gate, the one-mile-wide strait connecting San Francisco Bay and the Pacific Ocean. The structure links the U.S. city of San Francisco, California—the northern tip of the San Francisco Peninsula—to Marin County, carrying both U.S. Route 101 and California State Route 1 across the strait. It also carries pedestrian and bicycle traffic, and is designated as part of U.S. Bicycle Route 95.",
+                    ticketLink: "",
+                    date: "",
+                    spacialVideoLink: "GoldenGate.MOV",
+                    mapInfo: Event.MapInfo(
+                        imageMarker: "pin",
+                        colorMarker: .green,
+                        coordinates: CLLocationCoordinate2D(
+                            latitude: 37.818031,
+                            longitude: -122.478365
+                        )
+                    )),
+            
+            Event(title: "Fort Point National Historic Site",
+                    location: "Building 999 Marine Drive, San Francisco CA 94129",
+                    description: "​Fort Point National Historic Site is a Civil War–era brick fort tucked beneath the Golden Gate Bridge that once protected San Francisco Bay and now offers guided tours and sweeping bridge‑and‑bay views.",
+                    ticketLink: "nps.gov/fopo/index.htm",
+                    date: "",
+                    spacialVideoLink: "FortPoint.MOV",
+                    mapInfo: Event.MapInfo(
+                        imageMarker: "pin",
+                        colorMarker: .green,
+                        coordinates: CLLocationCoordinate2D(
+                            latitude: 37.810569,
+                            longitude: -122.476746
                         )
                     ))
             
