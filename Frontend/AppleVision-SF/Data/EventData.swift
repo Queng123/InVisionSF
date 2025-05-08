@@ -224,7 +224,55 @@ struct EventData {
                             latitude: 37.7834402,
                             longitude: -122.4592374
                         )
+                    )),
+            
+            Event(title: "Scoma's",
+                    location: "1965 Al Scoma Way,San Francisco, CA 94133",
+                    description: "Scoma’s is a family‑run Fisherman’s Wharf institution on Pier 47 that’s been serving pier‑to‑plate Dungeness crab, cioppino, and other local catches since 1965, using its own dockside fish‑receiving station to guarantee freshness.",
+                    ticketLink: "https://scomas.com/",
+                    date: "",
+                    spacialVideoLink: "scomas.MOV",
+                    mapInfo: Event.MapInfo(
+                        imageMarker: "pin",
+                        colorMarker: .blue,
+                        coordinates: CLLocationCoordinate2D(
+                            latitude: 37.808906,
+                            longitude: -122.416310
+                        )
+                    )),
+            
+            Event(title: "Ghirardelli Square⁩",
+                    location: "Beach St, San Francisco CA 94109",
+                    description: "Ghirardelli Square is a historic waterfront landmark where the 19th‑century Ghirardelli chocolate factory has been transformed into a lively enclave of shops, restaurants, and the brand’s flagship ice‑cream parlor.",
+                    ticketLink: "https://www.ghirardellisq.com/",
+                    date: "",
+                    spacialVideoLink: "Ghirardelli.MOV",
+                    mapInfo: Event.MapInfo(
+                        imageMarker: "pin",
+                        colorMarker: .green,
+                        coordinates: CLLocationCoordinate2D(
+                            latitude: 37.80600,
+                            longitude: -122.42260
+                        )
+                    )),
+            
+        
+            
+            Event(title: "SF Awesome AI Dev Tools",
+                    location: "88 Colin P Kelly Jr St, San Francisco, CA  94107",
+                    description: "​You probably already know that AI is changing the world. Come learn about some of the awesome AI dev tools being worked on.",
+                    ticketLink: "https://lu.ma/856ufska?tk=2gPkVv",
+                    date: "",
+                    spacialVideoLink: "github.MOV",
+                    mapInfo: Event.MapInfo(
+                        imageMarker: "pin",
+                        colorMarker: .red,
+                        coordinates: CLLocationCoordinate2D(
+                            latitude: 37.782180,
+                            longitude: -122.391276
+                        )
                     ))
+            
         ]
     }
 }
