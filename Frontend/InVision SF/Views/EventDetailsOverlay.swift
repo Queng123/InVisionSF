@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+
 import QuickLook
 
 struct EventDetailOverlay: View {
@@ -18,7 +19,6 @@ struct EventDetailOverlay: View {
     
     @State private var isVideoPlaying = false
     @State private var selectedVideoName: String? = nil
-    @State private var showingBuyView = false
 
     @State private var lookaroundScene: MKLookAroundScene?
     
@@ -60,18 +60,17 @@ struct EventDetailOverlay: View {
                         Text(event.description)
                             .font(.body)
                             .padding()
-                        if !event.ticketInfo.isEmpty {
+                        if !event.ticketLink.isEmpty {
                             Button(action: {
-                                showingBuyView = true
+                                if let url = URL(string: event.ticketLink) {
+                                    UIApplication.shared.open(url)
+                                }
                             }) {
                                 Text("More informations here!")
                                     .padding()
                                     .background(Color.blue)
                                     .foregroundColor(.white)
                                     .cornerRadius(8)
-                            }
-                            .sheet(isPresented: $showingBuyView) {
-                                BuyTicketView(ticketInfos: event.ticketInfo)
                             }
                         }
                     }
