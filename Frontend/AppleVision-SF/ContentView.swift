@@ -14,34 +14,38 @@ struct ContentView: View {
     @State private var isMenuExpanded = false
     @State private var events: [Event] = []
     @State private var selectedEvent: Event? = nil
+    @StateObject private var userCart = UserCart()
 
     var body: some View {
-        ZStack {
-            VStack {
-                MapView(events: $events, selectedEvent: $selectedEvent)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .edgesIgnoringSafeArea(.all)
-                
-                ExpandableMenu(
-                    isExpanded: $isMenuExpanded,
-                    searchText: $searchText,
-                    events: $events,
-                    onEventSelected: { event in
-                        selectedEvent = event
-                    }
-                )
-            }
+        NavigationStack {
+            ZStack {
+                VStack {
+                    MapView(events: $events, selectedEvent: $selectedEvent)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .edgesIgnoringSafeArea(.all)
 
-            if let selectedEvent = selectedEvent {
-                EventDetailOverlay(event: selectedEvent) {
-                    self.selectedEvent = nil
+                    ExpandableMenu(
+                        isExpanded: $isMenuExpanded,
+                        searchText: $searchText,
+                        events: $events,
+                        onEventSelected: { event in
+                            selectedEvent = event
+                        }
+                    )
+                }
+
+                if let selectedEvent = selectedEvent {
+                    EventDetailOverlay(event: selectedEvent) {
+                        self.selectedEvent = nil
+                    }
                 }
             }
+            .onAppear {
+                fetchEvents()
+                print(events)
+            }
         }
-        .onAppear {
-            fetchEvents()
-            print(events)
-        }
+        .environmentObject(userCart)
     }
 
     private func fetchEvents() {

@@ -17,6 +17,7 @@ struct Event: Identifiable, Hashable {
     let date: String
     let spacialVideoLink: String
     let mapInfo: MapInfo?
+    let ticketInfo: [TicketInfo]
 
     struct MapInfo {
         let imageMarker: String
@@ -24,7 +25,7 @@ struct Event: Identifiable, Hashable {
         let coordinates: CLLocationCoordinate2D
     }
     
-    init(title: String, location: String, description: String, ticketLink: String, date: String, spacialVideoLink: String, mapInfo: MapInfo? = nil) {
+    init(title: String, location: String, description: String, ticketLink: String, date: String, spacialVideoLink: String, mapInfo: MapInfo? = nil, ticketInfo: [TicketInfo] = []) {
         self.title = title
         self.location = location
         self.description = description
@@ -32,6 +33,7 @@ struct Event: Identifiable, Hashable {
         self.date = date
         self.spacialVideoLink = spacialVideoLink
         self.mapInfo = mapInfo
+        self.ticketInfo = ticketInfo
     }
     
     func hash(into hasher: inout Hasher) {
