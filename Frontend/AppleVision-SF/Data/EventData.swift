@@ -28,7 +28,12 @@ struct EventData {
                             latitude: 37.768902,
                             longitude: -122.387917
                         )
-                    )),
+                    ),
+                    ticketInfo: [
+                      TicketInfo(name: "General Admission", price: 175),
+                      TicketInfo(name: "VIP", price: 395)
+                  ]
+                 ),
             Event(title: "Gyro King",
                     location: "25 Grove St #4702, San Francisco, CA 94102",
                     description: "Greek fast-food restaurant wrapping gyros & other take-out classics in low-frills surroundings.",
@@ -42,7 +47,8 @@ struct EventData {
                             latitude: 37.778625,
                             longitude: -122.415762
                         )
-                    )),
+                    )
+                  ),
             Event(title: "Chinese New Year Parade",
                     location: "Chinatown, San Francisco, CA",
                     description: "The Chinese New Year Parade in San Francisco is one of the largest and most famous celebrations of its kind outside of Asia, featuring vibrant floats, lion dances, and fireworks.",
