@@ -7,32 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		64324F112D8A3D5400F3E5DA /* OpenImmersiveLib in Frameworks */ = {isa = PBXBuildFile; productRef = 64324F102D8A3D5400F3E5DA /* OpenImmersiveLib */; };
 		CD04DD792D0A6B1C00A44828 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = CD04DD782D0A6B1C00A44828 /* RealityKitContent */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CD04DD732D0A6B1C00A44828 /* InVision SF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InVision SF.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD04DD732D0A6B1C00A44828 /* AppleVision-SF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppleVision-SF.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD04DD772D0A6B1C00A44828 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		CD04DD8E2D0A6B1D00A44828 /* Exceptions for "InVision SF" folder in "InVision SF" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = CD04DD722D0A6B1C00A44828 /* InVision SF */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		CD04DD752D0A6B1C00A44828 /* InVision SF */ = {
+		CD04DD752D0A6B1C00A44828 /* AppleVision-SF */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				CD04DD8E2D0A6B1D00A44828 /* Exceptions for "InVision SF" folder in "InVision SF" target */,
-			);
-			path = "InVision SF";
+			path = "AppleVision-SF";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -42,7 +28,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64324F112D8A3D5400F3E5DA /* OpenImmersiveLib in Frameworks */,
 				CD04DD792D0A6B1C00A44828 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,7 +38,7 @@
 		CD04DD6A2D0A6B1C00A44828 = {
 			isa = PBXGroup;
 			children = (
-				CD04DD752D0A6B1C00A44828 /* InVision SF */,
+				CD04DD752D0A6B1C00A44828 /* AppleVision-SF */,
 				CD04DD762D0A6B1C00A44828 /* Packages */,
 				CD04DD742D0A6B1C00A44828 /* Products */,
 			);
@@ -62,7 +47,7 @@
 		CD04DD742D0A6B1C00A44828 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CD04DD732D0A6B1C00A44828 /* InVision SF.app */,
+				CD04DD732D0A6B1C00A44828 /* AppleVision-SF.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -78,9 +63,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CD04DD722D0A6B1C00A44828 /* InVision SF */ = {
+		CD04DD722D0A6B1C00A44828 /* AppleVision-SF */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD04DD8F2D0A6B1D00A44828 /* Build configuration list for PBXNativeTarget "InVision SF" */;
+			buildConfigurationList = CD04DD8F2D0A6B1D00A44828 /* Build configuration list for PBXNativeTarget "AppleVision-SF" */;
 			buildPhases = (
 				CD04DD6F2D0A6B1C00A44828 /* Sources */,
 				CD04DD702D0A6B1C00A44828 /* Frameworks */,
@@ -91,15 +76,14 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				CD04DD752D0A6B1C00A44828 /* InVision SF */,
+				CD04DD752D0A6B1C00A44828 /* AppleVision-SF */,
 			);
-			name = "InVision SF";
+			name = "AppleVision-SF";
 			packageProductDependencies = (
 				CD04DD782D0A6B1C00A44828 /* RealityKitContent */,
-				64324F102D8A3D5400F3E5DA /* OpenImmersiveLib */,
 			);
 			productName = "AppleVision-SF";
-			productReference = CD04DD732D0A6B1C00A44828 /* InVision SF.app */;
+			productReference = CD04DD732D0A6B1C00A44828 /* AppleVision-SF.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,14 +94,14 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					CD04DD722D0A6B1C00A44828 = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
-			buildConfigurationList = CD04DD6E2D0A6B1C00A44828 /* Build configuration list for PBXProject "InVision SF" */;
+			buildConfigurationList = CD04DD6E2D0A6B1C00A44828 /* Build configuration list for PBXProject "AppleVision-SF" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -126,15 +110,12 @@
 			);
 			mainGroup = CD04DD6A2D0A6B1C00A44828;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				64324F0F2D8A3D5400F3E5DA /* XCRemoteSwiftPackageReference "openimmersivelib" */,
-			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CD04DD742D0A6B1C00A44828 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CD04DD722D0A6B1C00A44828 /* InVision SF */,
+				CD04DD722D0A6B1C00A44828 /* AppleVision-SF */,
 			);
 		};
 /* End PBXProject section */
@@ -169,6 +150,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleVision-SF/Preview Content\"";
+				DEVELOPMENT_TEAM = 8WATQ8XR77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -195,6 +177,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AppleVision-SF/Preview Content\"";
+				DEVELOPMENT_TEAM = 8WATQ8XR77;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -247,7 +230,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 8WATQ8XR77;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -311,7 +293,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 8WATQ8XR77;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -336,7 +317,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD04DD6E2D0A6B1C00A44828 /* Build configuration list for PBXProject "InVision SF" */ = {
+		CD04DD6E2D0A6B1C00A44828 /* Build configuration list for PBXProject "AppleVision-SF" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD04DD922D0A6B1D00A44828 /* Debug */,
@@ -345,7 +326,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD04DD8F2D0A6B1D00A44828 /* Build configuration list for PBXNativeTarget "InVision SF" */ = {
+		CD04DD8F2D0A6B1D00A44828 /* Build configuration list for PBXNativeTarget "AppleVision-SF" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD04DD902D0A6B1D00A44828 /* Debug */,
@@ -356,23 +337,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		64324F0F2D8A3D5400F3E5DA /* XCRemoteSwiftPackageReference "openimmersivelib" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/acuteimmersive/openimmersivelib";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		64324F102D8A3D5400F3E5DA /* OpenImmersiveLib */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 64324F0F2D8A3D5400F3E5DA /* XCRemoteSwiftPackageReference "openimmersivelib" */;
-			productName = OpenImmersiveLib;
-		};
 		CD04DD782D0A6B1C00A44828 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
