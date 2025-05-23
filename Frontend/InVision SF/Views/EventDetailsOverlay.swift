@@ -11,7 +11,7 @@ import MapKit
 import QuickLook
 
 struct EventDetailOverlay: View {
-    let event: Event
+    @State var event: Event
     let onClose: () -> Void
     var selectedEvent: Event?
 
@@ -22,6 +22,7 @@ struct EventDetailOverlay: View {
 
     @State private var lookaroundScene: MKLookAroundScene?
     
+    @State var myRating: Int = 0
 
     init(event: Event, onClose: @escaping () -> Void) {
             self.event = event
@@ -72,6 +73,19 @@ struct EventDetailOverlay: View {
                                     .foregroundColor(.white)
                                     .cornerRadius(8)
                             }
+                        }
+                        HStack{
+                            ForEach(1...5, id: \.self) { index in
+                                Image(systemName: index <= myRating ? "star.fill" : "star")
+                                    .foregroundColor(.yellow)
+                                    .font(.title)
+                                    .onTapGesture {
+                                        myRating = index
+                                    }
+                            }
+                            Text(String(format: "%.1f", event.rating))
+                                .font(.title2)
+                                .padding(.leading, 8)
                         }
                     }
                     .padding()
@@ -127,6 +141,8 @@ struct EventDetailOverlay: View {
             }
             .task {
                 await fetchLookaroundPreview()
+            }.onAppear{
+                myRating = selectedEvent?.my_rating ?? 0
             }
         }
     }

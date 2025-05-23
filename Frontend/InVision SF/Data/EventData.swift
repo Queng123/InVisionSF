@@ -32,7 +32,8 @@ struct EventData {
                     ticketInfo: [
                       TicketInfo(name: "General Admission", price: 175),
                       TicketInfo(name: "VIP", price: 395)
-                  ]
+                    ],
+                    rating: 4.5,
                  ),
             Event(title: "Gyro King",
                     location: "25 Grove St #4702, San Francisco, CA 94102",
@@ -47,7 +48,8 @@ struct EventData {
                             latitude: 37.778625,
                             longitude: -122.415762
                         )
-                    )
+                    ),
+                    rating: 4.5,
                   ),
             Event(title: "Chinese New Year Parade",
                     location: "Chinatown, San Francisco, CA",
@@ -62,7 +64,9 @@ struct EventData {
                             latitude: 37.796701,
                             longitude: -122.408446
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "icafe Bakery",
                     location: "133 Waverly Pl, San Francisco, CA 94108",
                     description: "A cozy bakery in Chinatown known for its delicious pastries, coffee, and traditional Chinese desserts.",
@@ -76,7 +80,9 @@ struct EventData {
                             latitude: 37.794616,
                             longitude: -122.407081
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "San Patrick Parade",
                     location: "Montgomery St & Market St, San Francisco, CA 94104",
                     description: "The San Patrick Parade is a vibrant celebration of Irish culture and heritage, featuring colorful floats, traditional music, and lively performances.",
@@ -90,7 +96,9 @@ struct EventData {
                             latitude: 37.788785,
                             longitude: -122.402002
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "Cherry Blossom Festival",
                     location: "Japantown, San Francisco, CA 94115",
                     description: "The Cherry Blossom Festival in San Francisco is an annual celebration of Japanese culture, featuring traditional performances, food stalls, and beautiful cherry blossoms in bloom.",
@@ -104,7 +112,9 @@ struct EventData {
                             latitude: 37.7855789,
                             longitude: -122.4298089
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "Matterhorn Restaurant and Bakery",
                     location: "2323 Van Ness Ave, San Francisco, CA 94109",
                     description: "A Swiss-themed restaurant and bakery offering a variety of traditional Swiss dishes and pastries in a cozy setting.",
@@ -118,7 +128,9 @@ struct EventData {
                             latitude: 37.7969973,
                             longitude: -122.4234686
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "16th Avenue Tiled Steps",
                     location: "16th Ave & Moraga St, San Francisco, CA 94122",
                     description: "A stunning mosaic staircase featuring over 75,000 handmade tiles, offering a beautiful view of the Pacific Ocean.",
@@ -132,7 +144,9 @@ struct EventData {
                             latitude: 37.75612,
                             longitude: -122.473572
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "Palace of Fine Arts",
                     location: "3601 Lyon St, San Francisco, CA 94123",
                     description: "A monumental structure originally constructed for the 1915 Panama-Pacific Exposition, featuring a beautiful rotunda and serene lagoon.",
@@ -146,7 +160,9 @@ struct EventData {
                             latitude: 37.8029772,
                             longitude: -122.4479806
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "Yoda Fountain",
                     location: "1 Letterman Dr, San Francisco, CA 94129",
                     description: "Fountain featuring the famous Star Wars character outside of the Lucasfilm headquarters.",
@@ -160,7 +176,9 @@ struct EventData {
                             latitude: 37.7986961,
                             longitude: -122.4503946
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "Letterman Digital Arts Center Recycled Water Pond",
                     location: "1101 Gorgas Ave, San Francisco, CA 94129",
                     description: "A serene pond located at the Letterman Digital Arts Center, known for its sustainable water practices and beautiful surroundings.",
@@ -174,7 +192,9 @@ struct EventData {
                             latitude: 37.8005272,
                             longitude: -122.4484849
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "Starbucks Letterman Digital Arts Center",
                     location: "1 Letterman Dr Building C, San Francisco, CA 94129",
                     description: "A Starbucks located within the Letterman Digital Arts Center, offering a cozy spot for coffee lovers.",
@@ -188,7 +208,9 @@ struct EventData {
                             latitude: 37.7990691,
                             longitude: -122.4493217
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "Farmers Market",
                     location: "Embarcadero at Green St, San Francisco, CA 94111",
                     description: "A vibrant farmers market offering fresh produce, artisanal goods, and local delicacies.",
@@ -202,7 +224,9 @@ struct EventData {
                             latitude: 37.7955,
                             longitude: -122.3933
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "Embarcadero Muni Station",
                     location: "Embarcadero Station, San Francisco, CA 94111",
                     description: "A major transit hub in San Francisco, connecting various Muni lines and providing access to the Embarcadero waterfront.",
@@ -216,7 +240,9 @@ struct EventData {
                             latitude: 37.7928548,
                             longitude: -122.3969007
                         )
-                    )),
+                    ),
+                  rating: 4.5,
+                 ),
             Event(title: "Arsicault Bakery",
                     location: "397 Arguello Blvd, San Francisco, CA 94118",
                     description: "A renowned bakery in San Francisco, famous for its flaky croissants and other French pastries.",
@@ -230,8 +256,9 @@ struct EventData {
                             latitude: 37.7834402,
                             longitude: -122.4592374
                         )
-                    )),
-            
+                    ),
+                    rating: 4.5,
+                  ),
             Event(title: "Scoma's",
                     location: "1965 Al Scoma Way,San Francisco, CA 94133",
                     description: "Scoma’s is a family‑run Fisherman’s Wharf institution on Pier 47 that’s been serving pier‑to‑plate Dungeness crab, cioppino, and other local catches since 1965, using its own dockside fish‑receiving station to guarantee freshness.",
@@ -245,7 +272,9 @@ struct EventData {
                             latitude: 37.808906,
                             longitude: -122.416310
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             
             Event(title: "Ghirardelli Square⁩",
                     location: "Beach St, San Francisco CA 94109",
@@ -260,7 +289,9 @@ struct EventData {
                             latitude: 37.80600,
                             longitude: -122.42260
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             
         
             
@@ -277,7 +308,9 @@ struct EventData {
                             latitude: 37.782180,
                             longitude: -122.391276
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             
             Event(title: "Golden Gate bridge",
                     location: "Golden Gate Bridge, San Francisco CA",
@@ -292,7 +325,9 @@ struct EventData {
                             latitude: 37.818031,
                             longitude: -122.478365
                         )
-                    )),
+                    ),
+                    rating: 4.5,
+                  ),
             
             Event(title: "Fort Point National Historic Site",
                     location: "Building 999 Marine Drive, San Francisco CA 94129",
@@ -307,7 +342,9 @@ struct EventData {
                             latitude: 37.810569,
                             longitude: -122.476746
                         )
-                    ))
+                    ),
+                    rating: 4.5,
+                  ),
             
         ]
     }

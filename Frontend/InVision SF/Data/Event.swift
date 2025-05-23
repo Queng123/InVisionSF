@@ -16,6 +16,8 @@ struct Event: Identifiable, Hashable {
     let ticketLink: String
     let date: String
     let spacialVideoLink: String
+    var rating: Double
+    var my_rating: Int
     let mapInfo: MapInfo?
     let ticketInfo: [TicketInfo]
 
@@ -25,7 +27,7 @@ struct Event: Identifiable, Hashable {
         let coordinates: CLLocationCoordinate2D
     }
     
-    init(title: String, location: String, description: String, ticketLink: String, date: String, spacialVideoLink: String, mapInfo: MapInfo? = nil, ticketInfo: [TicketInfo] = []) {
+    init(title: String, location: String, description: String, ticketLink: String, date: String, spacialVideoLink: String, mapInfo: MapInfo? = nil, ticketInfo: [TicketInfo] = [], rating: Double, my_rating: Int = -1) {
         self.title = title
         self.location = location
         self.description = description
@@ -34,10 +36,16 @@ struct Event: Identifiable, Hashable {
         self.spacialVideoLink = spacialVideoLink
         self.mapInfo = mapInfo
         self.ticketInfo = ticketInfo
+        self.rating = rating
+        self.my_rating = my_rating
     }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+    }
+
+    mutating func updateRating(rating: Int) {
+        my_rating = rating
     }
 }
 
