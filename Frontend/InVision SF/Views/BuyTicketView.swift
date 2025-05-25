@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PassKit
 
 struct SelectedTicket {
     let ticket: TicketInfo
@@ -20,6 +21,7 @@ struct BuyTicketView: View {
     @State private var expandedTicketId: UUID?
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var userCart: UserCart
+    @State private var isProcessingPayment = false
 
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -65,6 +67,13 @@ struct BuyTicketView: View {
                 Spacer(minLength: 20)
                 
                 buyButton
+
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Return")
+                        .frame(maxWidth: .infinity)
+                }
             }
             .padding()
         }
@@ -73,7 +82,7 @@ struct BuyTicketView: View {
     
     private func ticketRow(for ticket: TicketInfo) -> some View {
         _ = selectedTickets[ticket.id] != nil
-        let quantity = selectedTickets[ticket.id]?.quantity ?? 1
+        let quantity = selectedTickets[ticket.id]?.quantity ?? 0
 
         return VStack(alignment: .leading, spacing: 8) {
             HStack {
@@ -87,7 +96,7 @@ struct BuyTicketView: View {
                 Spacer()
 
                 Menu {
-                    ForEach(1...10, id: \.self) { i in
+                    ForEach(0...10, id: \.self) { i in
                         Button(action: {
                             selectedTickets[ticket.id] = SelectedTicket(ticket: ticket, quantity: i)
                         }) {
@@ -115,20 +124,41 @@ struct BuyTicketView: View {
 
     
     private var buyButton: some View {
-        Button(action: {
-            let newTickets = Array(selectedTickets.values)
-            userCart.addTickets(newTickets)
-
-            presentationMode.wrappedValue.dismiss()
-        }) {
-            Text("Buy Now")
+        VStack(spacing: 12) {
+            Button(action: {
+                isProcessingPayment = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    let newTickets = Array(selectedTickets.values)
+                    userCart.addTickets(newTickets)
+                    
+                    isProcessingPayment = false
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }) {
+                HStack {
+                    if isProcessingPayment {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                            .scaleEffect(0.8)
+                        Text("Processing...")
+                            .font(.system(size: 16, weight: .medium))
+                    } else {
+                        Image(systemName: "apple.logo")
+                            .font(.system(size: 16, weight: .medium))
+                        Text("Pay")
+                            .font(.system(size: 16, weight: .medium))
+                    }
+                }
                 .frame(maxWidth: .infinity)
-                .padding()
-                .background(!selectedTickets.isEmpty ? Color.blue : Color.gray)
+                .frame(height: 44)
                 .foregroundColor(.white)
-                .cornerRadius(10)
+                .background(isProcessingPayment ? Color.gray : Color.black)
+                .cornerRadius(8)
+                .animation(.easeInOut(duration: 0.2), value: isProcessingPayment)
+            }
+            .disabled(selectedTickets.isEmpty || isProcessingPayment)
         }
-        .disabled(selectedTickets.isEmpty)
     }
 
 
