@@ -10,7 +10,7 @@ import SwiftUI
 struct ExpandableMenu: View {
     @Binding var isExpanded: Bool
     @Binding var searchText: String
-    @Binding var events: [Event]
+    @ObservedObject var viewModel: EventViewModel
     var onEventSelected: (Event) -> Void
 
     var body: some View {
@@ -60,12 +60,13 @@ struct ExpandableMenu: View {
 
     private var filteredEvents: [Event] {
         if searchText.isEmpty {
-            return events
+            return viewModel.events
         } else {
-            return events.filter { event in
+            return viewModel.events.filter { event in
                 event.title.localizedCaseInsensitiveContains(searchText) ||
                 event.location.localizedCaseInsensitiveContains(searchText)
             }
         }
     }
+
 }

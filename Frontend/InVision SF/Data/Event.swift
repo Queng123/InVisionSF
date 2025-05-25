@@ -8,7 +8,16 @@ import Foundation
 import MapKit
 import SwiftUI
 
-struct Event: Identifiable, Hashable {
+class EventViewModel: ObservableObject {
+    @Published var events: [Event] = []
+
+    func fetchEvents() {
+        events = EventData.allEvents()
+    }
+}
+
+
+class Event: Identifiable, Hashable, ObservableObject {
     let id = UUID()
     let title: String
     let location: String
@@ -16,6 +25,8 @@ struct Event: Identifiable, Hashable {
     let ticketLink: String
     let date: String
     let spacialVideoLink: String
+    var rating: Double
+    var my_rating: Double
     let mapInfo: MapInfo?
     let ticketInfo: [TicketInfo]
 
@@ -25,7 +36,7 @@ struct Event: Identifiable, Hashable {
         let coordinates: CLLocationCoordinate2D
     }
     
-    init(title: String, location: String, description: String, ticketLink: String, date: String, spacialVideoLink: String, mapInfo: MapInfo? = nil, ticketInfo: [TicketInfo] = []) {
+    init(title: String, location: String, description: String, ticketLink: String, date: String, spacialVideoLink: String, mapInfo: MapInfo? = nil, ticketInfo: [TicketInfo] = [], rating: Double, my_rating: Double = 0.0) {
         self.title = title
         self.location = location
         self.description = description
@@ -34,10 +45,16 @@ struct Event: Identifiable, Hashable {
         self.spacialVideoLink = spacialVideoLink
         self.mapInfo = mapInfo
         self.ticketInfo = ticketInfo
+        self.rating = rating
+        self.my_rating = my_rating
     }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+    }
+
+    func updateRating(rating: Double) {
+        my_rating = rating
     }
 }
 

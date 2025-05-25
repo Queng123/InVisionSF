@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		64324F112D8A3D5400F3E5DA /* OpenImmersiveLib in Frameworks */ = {isa = PBXBuildFile; productRef = 64324F102D8A3D5400F3E5DA /* OpenImmersiveLib */; };
 		CD04DD792D0A6B1C00A44828 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = CD04DD782D0A6B1C00A44828 /* RealityKitContent */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64324F112D8A3D5400F3E5DA /* OpenImmersiveLib in Frameworks */,
 				CD04DD792D0A6B1C00A44828 /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,7 +94,6 @@
 			name = "InVision SF";
 			packageProductDependencies = (
 				CD04DD782D0A6B1C00A44828 /* RealityKitContent */,
-				64324F102D8A3D5400F3E5DA /* OpenImmersiveLib */,
 			);
 			productName = "AppleVision-SF";
 			productReference = CD04DD732D0A6B1C00A44828 /* InVision SF.app */;
@@ -127,7 +124,6 @@
 			mainGroup = CD04DD6A2D0A6B1C00A44828;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				64324F0F2D8A3D5400F3E5DA /* XCRemoteSwiftPackageReference "openimmersivelib" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CD04DD742D0A6B1C00A44828 /* Products */;
@@ -165,10 +161,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "AppleVision-SF/AppleVision-SF.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"AppleVision-SF/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"InVision SF/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -191,10 +186,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "AppleVision-SF/AppleVision-SF.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"AppleVision-SF/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"InVision SF/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
@@ -356,23 +350,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		64324F0F2D8A3D5400F3E5DA /* XCRemoteSwiftPackageReference "openimmersivelib" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/acuteimmersive/openimmersivelib";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		64324F102D8A3D5400F3E5DA /* OpenImmersiveLib */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 64324F0F2D8A3D5400F3E5DA /* XCRemoteSwiftPackageReference "openimmersivelib" */;
-			productName = OpenImmersiveLib;
-		};
 		CD04DD782D0A6B1C00A44828 /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;

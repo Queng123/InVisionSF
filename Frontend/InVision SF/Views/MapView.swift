@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @Binding var events: [Event]
+    @ObservedObject var viewModel: EventViewModel
     @Binding var selectedEvent: Event?
 
     @State private var region = MapCameraPosition.region(MKCoordinateRegion(
@@ -19,7 +19,7 @@ struct MapView: View {
 
     var body: some View {
         Map(position: $region, selection: $selectedEvent) {
-            ForEach(events) { event in
+            ForEach(viewModel.events) { event in
                 if let mapInfo = event.mapInfo {
                         Marker(
                             event.title,
