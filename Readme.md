@@ -6,7 +6,7 @@ The user can see several details of the event by clicking on the marker, like th
 
 # Demo
 
-[![Video Title](https://img.youtube.com/vi/xSu7KKH1IH0/0.jpg)](https://youtu.be/HS7Kt7_c4QI)
+[![Video Title](https://img.youtube.com/vi/HS7Kt7_c4QI/0.jpg)](https://youtu.be/HS7Kt7_c4QI)
 
 
 # Technologies
