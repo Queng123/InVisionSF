@@ -19,6 +19,7 @@ struct EventDetailOverlay: View {
     @State private var isVideoPlaying = false
     @State private var selectedVideoName: String? = nil
     @State private var showingBuyView = false
+    @State private var currentRating: Double
 
     @State private var lookaroundScene: MKLookAroundScene?
     
@@ -26,6 +27,7 @@ struct EventDetailOverlay: View {
     init(event: Event, onClose: @escaping () -> Void) {
             self.event = event
             self.onClose = onClose
+            self._currentRating = State(initialValue: event.my_rating)
         }
     
     var body: some View {
@@ -60,6 +62,13 @@ struct EventDetailOverlay: View {
                         Text(event.description)
                             .font(.body)
                             .padding()
+                        
+                        RatingSlider(currentRating: $currentRating)
+                            .padding(.horizontal)
+                            .onChange(of: currentRating) { oldValue, newValue in
+                                event.updateRating(rating: newValue)
+                            }
+                        
                         if !event.ticketInfo.isEmpty {
                             Button(action: {
                                 showingBuyView = true
@@ -74,6 +83,8 @@ struct EventDetailOverlay: View {
                                 BuyTicketView(ticketInfos: event.ticketInfo)
                             }
                         }
+                        
+                        
                     }
                     .padding()
                     VStack{

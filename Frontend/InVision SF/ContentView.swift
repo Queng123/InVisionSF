@@ -12,7 +12,7 @@ import MapKit
 struct ContentView: View {
     @State private var searchText = ""
     @State private var isMenuExpanded = false
-    @State private var events: [Event] = []
+    @StateObject private var viewModel = EventViewModel()
     @State private var selectedEvent: Event? = nil
     @StateObject private var userCart = UserCart()
 
@@ -20,14 +20,14 @@ struct ContentView: View {
         NavigationStack {
             ZStack {
                 VStack {
-                    MapView(events: $events, selectedEvent: $selectedEvent)
+                    MapView(viewModel: viewModel, selectedEvent: $selectedEvent)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .edgesIgnoringSafeArea(.all)
 
                     ExpandableMenu(
                         isExpanded: $isMenuExpanded,
                         searchText: $searchText,
-                        events: $events,
+                        viewModel: viewModel,
                         onEventSelected: { event in
                             selectedEvent = event
                         }
@@ -41,15 +41,11 @@ struct ContentView: View {
                 }
             }
             .onAppear {
-                fetchEvents()
-                print(events)
+                viewModel.fetchEvents()
+                print(viewModel.events)
             }
         }
         .environmentObject(userCart)
-    }
-
-    private func fetchEvents() {
-        events = EventData.allEvents()
     }
 }
 
