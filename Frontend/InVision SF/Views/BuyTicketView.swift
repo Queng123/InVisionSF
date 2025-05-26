@@ -78,6 +78,7 @@ struct BuyTicketView: View {
             .padding()
         }
         .navigationTitle("Buy Tickets")
+        .background(Color.white.ignoresSafeArea())
     }
     
     private func ticketRow(for ticket: TicketInfo) -> some View {
@@ -87,10 +88,29 @@ struct BuyTicketView: View {
         return VStack(alignment: .leading, spacing: 8) {
             HStack {
                 VStack(alignment: .leading) {
-                    Text(ticket.name)
-                        .font(.headline)
-                    Text(String(format: "$%.2f", ticket.price * Double(quantity)))
-                        .font(.subheadline)
+                    HStack {
+                        Image(systemName: "ticket")
+                            .foregroundColor(.blue)
+                            .font(.system(size: 20))
+
+                        Text(ticket.name)
+                            .font(.headline)
+                        
+                        Text(String(format: "$%.2f", ticket.price))
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .padding(.leading, 10)
+                    }
+                    HStack {
+                        Text("Total:")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .padding(.leading, 10)
+                        Text(String(format: "$%.2f", ticket.price * Double(quantity)))
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                            .padding(.leading, 10)
+                    }
                 }
 
                 Spacer()
@@ -124,41 +144,40 @@ struct BuyTicketView: View {
 
     
     private var buyButton: some View {
-        VStack(spacing: 12) {
-            Button(action: {
-                isProcessingPayment = true
+        Button(action: {
+            isProcessingPayment = true
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                let newTickets = Array(selectedTickets.values)
+                userCart.addTickets(newTickets)
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    let newTickets = Array(selectedTickets.values)
-                    userCart.addTickets(newTickets)
-                    
-                    isProcessingPayment = false
-                    presentationMode.wrappedValue.dismiss()
-                }
-            }) {
-                HStack {
-                    if isProcessingPayment {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                            .scaleEffect(0.8)
-                        Text("Processing...")
-                            .font(.system(size: 16, weight: .medium))
-                    } else {
-                        Image(systemName: "apple.logo")
-                            .font(.system(size: 16, weight: .medium))
-                        Text("Pay")
-                            .font(.system(size: 16, weight: .medium))
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .frame(height: 44)
-                .foregroundColor(.white)
-                .background(isProcessingPayment ? Color.gray : Color.black)
-                .cornerRadius(8)
-                .animation(.easeInOut(duration: 0.2), value: isProcessingPayment)
+                isProcessingPayment = false
+                presentationMode.wrappedValue.dismiss()
             }
-            .disabled(selectedTickets.isEmpty || isProcessingPayment)
+        }) {
+            HStack {
+                if isProcessingPayment {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .scaleEffect(0.8)
+                    Text("Processing...")
+                        .font(.system(size: 16, weight: .medium))
+                } else {
+                    Image(systemName: "apple.logo")
+                        .font(.system(size: 16, weight: .medium))
+                    Text("Pay")
+                        .font(.system(size: 16, weight: .medium))
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .frame(height: 44)
+            .foregroundColor(.white)
+            .background(isProcessingPayment ? Color.gray : Color.black)
+            .clipShape(RoundedRectangle(cornerRadius: 8))
+            .animation(.easeInOut(duration: 0.2), value: isProcessingPayment)
         }
+        .buttonStyle(PlainButtonStyle())
+        .disabled(selectedTickets.isEmpty || isProcessingPayment)
     }
 
 

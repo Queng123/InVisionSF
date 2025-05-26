@@ -81,7 +81,7 @@ struct EventDetailOverlay: View {
                             }
                             .sheet(isPresented: $showingBuyView) {
                                 BuyTicketView(ticketInfos: event.ticketInfo)
-                            }
+                            }.buttonStyle(PlainButtonStyle())
                         }
                         
                         
@@ -115,7 +115,7 @@ struct EventDetailOverlay: View {
                                 .background(Color.blue)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
-                        }
+                        }.buttonStyle(PlainButtonStyle())
 
                     }
                 }
@@ -135,6 +135,7 @@ struct EventDetailOverlay: View {
                         .cornerRadius(10)
                 }
                 .padding()
+                .buttonStyle(PlainButtonStyle())
                 
             }
             .task {
