@@ -11,6 +11,8 @@ import PassKit
 struct SelectedTicket {
     let ticket: TicketInfo
     var quantity: Int = 1
+    var eventName: String = ""
+    var eventDate: Date = Date()
 }
 
 struct BuyTicketView: View {
@@ -20,8 +22,9 @@ struct BuyTicketView: View {
     @State private var selectedTickets: [UUID: SelectedTicket] = [:]
     @State private var expandedTicketId: UUID?
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var userCart: UserCart
+    @EnvironmentObject var user: User
     @State private var isProcessingPayment = false
+    let eventName: String
 
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -118,7 +121,7 @@ struct BuyTicketView: View {
                 Menu {
                     ForEach(0...10, id: \.self) { i in
                         Button(action: {
-                            selectedTickets[ticket.id] = SelectedTicket(ticket: ticket, quantity: i)
+                            selectedTickets[ticket.id] = SelectedTicket(ticket: ticket, quantity: i, eventName: eventName, eventDate: Date())
                         }) {
                             Text("\(i)")
                             if quantity == i {
@@ -148,9 +151,11 @@ struct BuyTicketView: View {
             isProcessingPayment = true
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                let newTickets = Array(selectedTickets.values)
-                userCart.addTickets(newTickets)
-                
+                var newTickets = Array(selectedTickets.values)
+                for i in 0..<newTickets.count {
+                    newTickets[i].eventDate = selectedDate
+                }
+                user.addTickets(newTickets)
                 isProcessingPayment = false
                 presentationMode.wrappedValue.dismiss()
             }

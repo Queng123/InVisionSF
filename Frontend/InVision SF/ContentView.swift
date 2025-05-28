@@ -14,15 +14,14 @@ struct ContentView: View {
     @State private var isMenuExpanded = false
     @StateObject private var viewModel = EventViewModel()
     @State private var selectedEvent: Event? = nil
-    @StateObject private var userCart = UserCart()
+    @StateObject private var user = User()
 
     var body: some View {
         NavigationStack {
             ZStack {
-                VStack {
+                VStack(spacing: 0) {
                     MapView(viewModel: viewModel, selectedEvent: $selectedEvent)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .edgesIgnoringSafeArea(.all)
 
                     ExpandableMenu(
                         isExpanded: $isMenuExpanded,
@@ -45,7 +44,7 @@ struct ContentView: View {
                 print(viewModel.events)
             }
         }
-        .environmentObject(userCart)
+        .environmentObject(user)
     }
 }
 
