@@ -32,6 +32,12 @@ struct BuyTicketView: View {
         formatter.timeStyle = .none
         return formatter
     }()
+
+    private let timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return formatter
+    }()
     
     var body: some View {
         ScrollView {
@@ -50,9 +56,14 @@ struct BuyTicketView: View {
                     showDatePicker = true
                 }) {
                     HStack {
-                        Text(dateFormatter.string(from: selectedDate))
-                            .font(.headline)
-                        
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(dateFormatter.string(from: selectedDate))
+                                .font(.headline)
+                            
+                            Text(timeFormatter.string(from: selectedDate))
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
                         Spacer()
                         
                         Image(systemName: "calendar")
@@ -194,15 +205,15 @@ struct DateSelectionView: View {
     
     var body: some View {
         VStack {
-            Text("Select a Date")
+            Text("Select Date & Time")
                 .font(.title2)
                 .bold()
                 .padding()
             
             DatePicker(
-                "Event Date",
+                "Event Date & Time",
                 selection: $selectedDate,
-                displayedComponents: [.date]
+                displayedComponents: [.date, .hourAndMinute]
             )
             .datePickerStyle(GraphicalDatePickerStyle())
             .padding()
