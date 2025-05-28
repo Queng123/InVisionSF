@@ -27,8 +27,10 @@ class Event: Identifiable, Hashable, ObservableObject {
     let spacialVideoLink: String
     var rating: Double
     var my_rating: Double
+    var went: Bool
     let mapInfo: MapInfo?
     let ticketInfo: [TicketInfo]
+
 
     struct MapInfo {
         let imageMarker: String
@@ -36,7 +38,7 @@ class Event: Identifiable, Hashable, ObservableObject {
         let coordinates: CLLocationCoordinate2D
     }
     
-    init(title: String, location: String, description: String, ticketLink: String, date: String, spacialVideoLink: String, mapInfo: MapInfo? = nil, ticketInfo: [TicketInfo] = [], rating: Double, my_rating: Double = 0.0) {
+    init(title: String, location: String, description: String, ticketLink: String, date: String, spacialVideoLink: String, mapInfo: MapInfo? = nil, ticketInfo: [TicketInfo] = [], rating: Double, my_rating: Double = 0.0, went: Bool = false) {
         self.title = title
         self.location = location
         self.description = description
@@ -47,6 +49,7 @@ class Event: Identifiable, Hashable, ObservableObject {
         self.ticketInfo = ticketInfo
         self.rating = rating
         self.my_rating = my_rating
+        self.went = went
     }
     
     func hash(into hasher: inout Hasher) {

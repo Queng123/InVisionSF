@@ -20,6 +20,7 @@ struct EventDetailOverlay: View {
     @State private var selectedVideoName: String? = nil
     @State private var showingBuyView = false
     @State private var currentRating: Double
+    @State private var went: Bool
 
     @State private var lookaroundScene: MKLookAroundScene?
     
@@ -28,6 +29,7 @@ struct EventDetailOverlay: View {
             self.event = event
             self.onClose = onClose
             self._currentRating = State(initialValue: event.my_rating)
+            self._went = State(initialValue: event.went)
         }
     
     var body: some View {
@@ -63,17 +65,30 @@ struct EventDetailOverlay: View {
                             .font(.body)
                             .padding()
                         
-                        Text("Rating \(event.rating)")
-                            .font(.subheadline)
-                            .padding(.bottom, 10)
+                        HStack(spacing: 2) {
+                            ForEach(1...5, id: \.self) { index in
+                                Image(systemName: starType(for: index, rating: event.rating))
+                                    .foregroundColor(.yellow)
+                                    .font(.largeTitle)
+                                    .overlay(
+                                        Image(systemName: "star")
+                                            .foregroundColor(.black)
+                                            .font(.largeTitle)
+                                    )
+                            }
+
+                            Text(String(format: "%.1f", event.rating))
+                                .font(.largeTitle)
+                        }
+                        .padding(.bottom, 10)
                         
-                        // if event.went {
+                        if went {
                             RatingSlider(currentRating: $currentRating)
                                 .padding(.horizontal)
                                 .onChange(of: currentRating) { oldValue, newValue in
                                     event.updateRating(rating: newValue)
                                 }
-                        // }
+                        }
                         
                         if !event.ticketInfo.isEmpty {
                             Button(action: {
@@ -122,7 +137,19 @@ struct EventDetailOverlay: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }.buttonStyle(PlainButtonStyle())
-
+                        
+                        Button(action: {
+                            went.toggle()
+                            event.went = went
+                        }) {
+                            Text(went ? "I didn't go to this event" : "I went to this event")
+                                .font(.headline)
+                                .frame(width: 200, height: 25)
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }.buttonStyle(PlainButtonStyle())
                     }
                 }
                 .frame(width: 1000, height: 800)
@@ -149,7 +176,19 @@ struct EventDetailOverlay: View {
             }
         }
     }
-    
+
+    private func starType(for index: Int, rating: Double) -> String {
+        let starValue = Double(index)
+        
+        if rating >= starValue {
+            return "star.fill"
+        } else if rating >= starValue - 0.5 {
+            return "star.leadinghalf.filled"
+        } else {
+            return "star"
+        }
+    }
+
     func fetchLookaroundPreview() async {
         lookaroundScene = nil
         if let coordinates = event.mapInfo?.coordinates {

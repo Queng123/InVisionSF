@@ -12,25 +12,25 @@ struct RatingSlider: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            Text("Rating: \(Int(currentRating))/10")
+            Text("My rating: \(Int(currentRating))/5")
                 .font(.headline)
                 .foregroundColor(.primary)
             
-            Slider(value: $currentRating, in: 0...10, step: 1) {
+            Slider(value: $currentRating, in: 0...5, step: 1) {
                 Text("Rating")
             } minimumValueLabel: {
                 Text("0")
                     .font(.caption)
                     .foregroundColor(.secondary)
             } maximumValueLabel: {
-                Text("10")
+                Text("5")
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
             .accentColor(.blue)
             
             HStack {
-                ForEach(0...10, id: \.self) { value in
+                ForEach(0...5, id: \.self) { value in
                     Text("\(value)")
                         .font(.system(size: 12))
                         .foregroundColor(value <= Int(currentRating) ? .blue : .gray)
