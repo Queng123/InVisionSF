@@ -75,9 +75,10 @@ struct TicketRowView: View {
                     .foregroundColor(.secondary)
             }
             
-            Text(ticket.eventDate, style: .date)
+            Text("\(ticket.eventDate, style: .date) - \(ticket.eventDate, style: .time)")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
+            
         }
         .padding(.vertical, 4)
     }
