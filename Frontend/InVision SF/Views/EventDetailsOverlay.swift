@@ -63,11 +63,17 @@ struct EventDetailOverlay: View {
                             .font(.body)
                             .padding()
                         
-                        RatingSlider(currentRating: $currentRating)
-                            .padding(.horizontal)
-                            .onChange(of: currentRating) { oldValue, newValue in
-                                event.updateRating(rating: newValue)
-                            }
+                        Text("Rating \(event.rating)")
+                            .font(.subheadline)
+                            .padding(.bottom, 10)
+                        
+                        // if event.went {
+                            RatingSlider(currentRating: $currentRating)
+                                .padding(.horizontal)
+                                .onChange(of: currentRating) { oldValue, newValue in
+                                    event.updateRating(rating: newValue)
+                                }
+                        // }
                         
                         if !event.ticketInfo.isEmpty {
                             Button(action: {
@@ -80,8 +86,8 @@ struct EventDetailOverlay: View {
                                     .cornerRadius(8)
                             }
                             .sheet(isPresented: $showingBuyView) {
-                                BuyTicketView(ticketInfos: event.ticketInfo)
-                            }
+                                BuyTicketView(ticketInfos: event.ticketInfo, eventName: event.title)
+                            }.buttonStyle(PlainButtonStyle())
                         }
                         
                         
@@ -115,7 +121,7 @@ struct EventDetailOverlay: View {
                                 .background(Color.blue)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
-                        }
+                        }.buttonStyle(PlainButtonStyle())
 
                     }
                 }
@@ -135,6 +141,7 @@ struct EventDetailOverlay: View {
                         .cornerRadius(10)
                 }
                 .padding()
+                .buttonStyle(PlainButtonStyle())
                 
             }
             .task {

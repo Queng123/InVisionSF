@@ -50,6 +50,7 @@ struct ExpandableMenu: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
+            .buttonStyle(PlainButtonStyle())
             .padding(.horizontal)
             .padding(.bottom)
         }
