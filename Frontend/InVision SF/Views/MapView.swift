@@ -39,12 +39,18 @@ struct MapView: View {
                 Button(action: {
                     isShowingUserView = true
                 }) {
-                    Image(systemName: "cart")
-                        .padding()
-                        .background(Color.blue.opacity(0.8))
-                        .clipShape(Circle())
+                    Image(systemName: "list.bullet.rectangle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 35, height: 40) // Adjust size as needed
+                        .foregroundColor(.white)
+                        .padding(20)
                 }
-                
+                .background(
+                    RoundedRectangle(cornerRadius: 45)
+                        .fill(Color.blue.opacity(0.8))
+                )
+            
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Legend")
                         .font(.headline)
@@ -52,7 +58,7 @@ struct MapView: View {
                     
                     HStack(spacing: 8) {
                         Circle()
-                            .fill(Color.red)
+                            .fill(Color.purple)
                             .frame(width: 12, height: 12)
                         Text("Events")
                             .font(.caption)

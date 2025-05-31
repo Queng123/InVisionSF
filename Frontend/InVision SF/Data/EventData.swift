@@ -10,7 +10,7 @@ import CoreLocation
 
 
 // Restaurants: Blue
-// Events: Red
+// Events: Purple
 // Venues: Green
 struct EventData {
     static func allEvents() -> [Event] {
@@ -23,7 +23,7 @@ struct EventData {
                     spacialVideoLink: "ChaseCenter.MOV",
                     mapInfo: Event.MapInfo(
                         imageMarker: "pin",
-                        colorMarker: .red,
+                        colorMarker: .purple,
                         coordinates: CLLocationCoordinate2D(
                             latitude: 37.768902,
                             longitude: -122.387917
@@ -59,7 +59,7 @@ struct EventData {
                     spacialVideoLink: "ChineseNewYearParade.MOV",
                     mapInfo: Event.MapInfo(
                         imageMarker: "pin",
-                        colorMarker: .red,
+                        colorMarker: .purple,
                         coordinates: CLLocationCoordinate2D(
                             latitude: 37.796701,
                             longitude: -122.408446
@@ -91,7 +91,7 @@ struct EventData {
                     spacialVideoLink: "SanPatrickParade.MOV",
                     mapInfo: Event.MapInfo(
                         imageMarker: "pin",
-                        colorMarker: .red,
+                        colorMarker: .purple,
                         coordinates: CLLocationCoordinate2D(
                             latitude: 37.788785,
                             longitude: -122.402002
@@ -107,7 +107,7 @@ struct EventData {
                     spacialVideoLink: "CherryBlossomFestival.MOV",
                     mapInfo: Event.MapInfo(
                         imageMarker: "pin",
-                        colorMarker: .red,
+                        colorMarker: .purple,
                         coordinates: CLLocationCoordinate2D(
                             latitude: 37.7855789,
                             longitude: -122.4298089
@@ -139,7 +139,7 @@ struct EventData {
                     spacialVideoLink: "16avTiledSteps.MOV",
                     mapInfo: Event.MapInfo(
                         imageMarker: "pin",
-                        colorMarker: .red,
+                        colorMarker: .purple,
                         coordinates: CLLocationCoordinate2D(
                             latitude: 37.75612,
                             longitude: -122.473572
@@ -219,7 +219,7 @@ struct EventData {
                     spacialVideoLink: "FarmersMarket.MOV",
                     mapInfo: Event.MapInfo(
                         imageMarker: "pin",
-                        colorMarker: .red,
+                        colorMarker: .purple,
                         coordinates: CLLocationCoordinate2D(
                             latitude: 37.7955,
                             longitude: -122.3933
@@ -303,7 +303,7 @@ struct EventData {
                     spacialVideoLink: "github.MOV",
                     mapInfo: Event.MapInfo(
                         imageMarker: "pin",
-                        colorMarker: .red,
+                        colorMarker: .purple,
                         coordinates: CLLocationCoordinate2D(
                             latitude: 37.782180,
                             longitude: -122.391276
