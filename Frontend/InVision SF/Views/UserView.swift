@@ -23,7 +23,7 @@ struct UserView: View {
                             .foregroundColor(.blue)
                     }
                     
-                    Text("\(user.userName) - Cart")
+                    Text("\(user.userName) - My Orders")
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -37,7 +37,7 @@ struct UserView: View {
                         Spacer()
                         HStack {
                             Spacer()
-                            Text("The cart is empty")
+                            Text("You don't have any tickets yet")
                                 .font(.title2)
                                 .foregroundColor(.gray)
                             Spacer()

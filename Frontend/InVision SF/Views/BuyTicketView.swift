@@ -7,6 +7,8 @@
 
 import SwiftUI
 import PassKit
+import CoreImage
+import CoreImage.CIFilterBuiltins
 
 struct SelectedTicket {
     let ticket: TicketInfo
@@ -26,7 +28,10 @@ struct BuyTicketView: View {
     @State private var isProcessingPayment = false
     @State private var showConfirmation = false
     @State private var paymentComplete = false
+    @State private var isAddingToWallet = false
+    @State private var isAddedToWallet = false
     let eventName: String
+    let context = CIContext()
 
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -54,7 +59,7 @@ struct BuyTicketView: View {
                             .font(.title2)
                             .bold()
                         
-                        Text("Your tickets have been added to your cart.")
+                        Text("Your tickets have been added to your profile.")
                             .foregroundColor(.gray)
                             .multilineTextAlignment(.center)
                     }
@@ -98,8 +103,6 @@ struct BuyTicketView: View {
                     }
                 }
                 
-                Spacer(minLength: 20)
-                
                 if !paymentComplete {
                     Button(action: {
                         showConfirmation = true
@@ -129,6 +132,21 @@ struct BuyTicketView: View {
                         }
                     }
                 }
+                
+                if paymentComplete {
+                    VStack {
+                        if let uiImage = generateQRCode(from: "https://quentinbrejoin.fr/blog/") {
+                            Image(uiImage: uiImage)
+                                .interpolation(.none)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                        } else {
+                            Text("Failed to generate QR code.")
+                        }
+                    }.frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(Rectangle())
+                }
 
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
@@ -136,11 +154,77 @@ struct BuyTicketView: View {
                     Text(paymentComplete ? "Done" : "Return")
                         .frame(maxWidth: .infinity)
                 }
+                
+                if paymentComplete {
+                    Button(action: {
+                            isAddingToWallet = true
+                            isAddedToWallet = false
+
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                isAddingToWallet = false
+                                isAddedToWallet = true
+                            
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    isAddedToWallet = false
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                            }
+                        }) {
+                            HStack {
+                                if isAddingToWallet {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                                        .scaleEffect(0.8)
+                                    Text("Adding...")
+                                        .font(.system(size: 16, weight: .medium))
+                                } else if isAddedToWallet {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.green)
+                                        .font(.system(size: 16, weight: .medium))
+                                    Text("Added!")
+                                        .font(.system(size: 16, weight: .medium))
+                                } else {
+                                    Image("AppleWallet")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .font(.system(size: 16, weight: .medium))
+                                    Text("Add to Apple Wallet")
+                                        .font(.system(size: 16, weight: .medium))
+                                }
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 44)
+                            .foregroundColor(.white)
+                            .background((isAddingToWallet || isAddedToWallet) ? Color.gray : Color.black)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .animation(.easeInOut(duration: 0.2), value: isAddingToWallet)
+                            .animation(.easeInOut(duration: 0.2), value: isAddedToWallet)
+                        }
+                        .disabled(isAddingToWallet || isAddedToWallet)
+                        .buttonStyle(PlainButtonStyle())
+
+                }
             }
             .padding()
         }
         .navigationTitle(paymentComplete ? "Purchase Complete" : "Buy Tickets")
         .background(Color.white.ignoresSafeArea())
+    }
+    
+    func qrCode(inputMessage: String) -> CIImage {
+        let qrCodeGenerator = CIFilter.qrCodeGenerator()
+        qrCodeGenerator.message = inputMessage.data(using: .ascii)!
+        qrCodeGenerator.correctionLevel = "H"
+        return qrCodeGenerator.outputImage!
+    }
+    
+    func generateQRCode(from string: String) -> UIImage? {
+        let ciImage = qrCode(inputMessage: string)
+        if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
+            return UIImage(cgImage: cgImage)
+        }
+        return nil
     }
     
     private func ticketRow(for ticket: TicketInfo) -> some View {
@@ -266,7 +350,7 @@ struct PaymentConfirmationView: View {
                             .font(.title2)
                             .bold()
                         
-                        Text("Your tickets have been added to your cart.")
+                        Text("Your tickets have been added to your profile.")
                             .foregroundColor(.gray)
                             .multilineTextAlignment(.center)
                     }
@@ -326,7 +410,6 @@ struct PaymentConfirmationView: View {
                 if !paymentComplete {
                     Button(action: {
                         isProcessingPayment = true
-                        // Simulate payment processing
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             var newTickets = selectedTickets
                             for i in 0..<newTickets.count {
