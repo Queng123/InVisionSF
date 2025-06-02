@@ -30,8 +30,8 @@ struct EventData {
                         )
                     ),
                     ticketInfo: [
-                      TicketInfo(name: "General Admission", price: 175),
-                      TicketInfo(name: "VIP", price: 395)
+                        TicketInfo(name: "General Admission", price: 175),
+                        TicketInfo(name: "VIP", price: 395)
                     ],
                     rating: 4.5,
                  ),
@@ -139,7 +139,7 @@ struct EventData {
                     spacialVideoLink: "16avTiledSteps.MOV",
                     mapInfo: Event.MapInfo(
                         imageMarker: "pin",
-                        colorMarker: .purple,
+                        colorMarker: .green,
                         coordinates: CLLocationCoordinate2D(
                             latitude: 37.75612,
                             longitude: -122.473572
@@ -261,7 +261,7 @@ struct EventData {
                   ),
             Event(title: "Scoma's",
                     location: "1965 Al Scoma Way,San Francisco, CA 94133",
-                    description: "Scoma’s is a family‑run Fisherman’s Wharf institution on Pier 47 that’s been serving pier‑to‑plate Dungeness crab, cioppino, and other local catches since 1965, using its own dockside fish‑receiving station to guarantee freshness.",
+                    description: "Scoma's is a family‑run Fisherman's Wharf institution on Pier 47 that's been serving pier‑to‑plate Dungeness crab, cioppino, and other local catches since 1965, using its own dockside fish‑receiving station to guarantee freshness.",
                     ticketLink: "https://scomas.com/",
                     date: "",
                     spacialVideoLink: "scomas.MOV",
@@ -278,7 +278,7 @@ struct EventData {
             
             Event(title: "Ghirardelli Square⁩",
                     location: "Beach St, San Francisco CA 94109",
-                    description: "Ghirardelli Square is a historic waterfront landmark where the 19th‑century Ghirardelli chocolate factory has been transformed into a lively enclave of shops, restaurants, and the brand’s flagship ice‑cream parlor.",
+                    description: "Ghirardelli Square is a historic waterfront landmark where the 19th‑century Ghirardelli chocolate factory has been transformed into a lively enclave of shops, restaurants, and the brand's flagship ice‑cream parlor.",
                     ticketLink: "https://www.ghirardellisq.com/",
                     date: "",
                     spacialVideoLink: "Ghirardelli.MOV",
@@ -331,7 +331,7 @@ struct EventData {
             
             Event(title: "Fort Point National Historic Site",
                     location: "Building 999 Marine Drive, San Francisco CA 94129",
-                    description: "​Fort Point National Historic Site is a Civil War–era brick fort tucked beneath the Golden Gate Bridge that once protected San Francisco Bay and now offers guided tours and sweeping bridge‑and‑bay views.",
+                    description: "​Fort Point National Historic Site is a Civil War–era brick fort tucked beneath the Golden Gate Bridge that once protected San Francisco Bay and now offers guided tours and sweeping bridge‑and‑bay views.",
                     ticketLink: "nps.gov/fopo/index.htm",
                     date: "",
                     spacialVideoLink: "FortPoint.MOV",
@@ -345,6 +345,26 @@ struct EventData {
                     ),
                     rating: 4.5,
                   ),
+            Event(title: "Oracle Park",
+                    location: "24 Willie Mays Plaza, San Francisco, CA 94107",
+                    description: "Oracle Park is a baseball stadium located in San Francisco, California. It is the home of the San Francisco Giants, a Major League Baseball team.",
+                    ticketLink: "https://www.mlb.com/giants/ballpark",
+                    date: "",
+                    spacialVideoLink: "OraclePark.MOV",
+                    mapInfo: Event.MapInfo(
+                        imageMarker: "pin",
+                        colorMarker: .purple,
+                        coordinates: CLLocationCoordinate2D(
+                            latitude: 37.778419,
+                            longitude: -122.390617
+                        )
+                    ),
+                    ticketInfo: [
+                        TicketInfo(name: "General Admission", price: 100),
+                        TicketInfo(name: "VIP", price: 200)
+                    ],
+                    rating: 4.5,
+                 ),
             
         ]
     }
