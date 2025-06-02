@@ -94,7 +94,7 @@ struct EventDetailOverlay: View {
                             Button(action: {
                                 showingBuyView = true
                             }) {
-                                Text("More informations here!")
+                                Text("Purchase tickets")
                                     .padding()
                                     .background(Color.blue)
                                     .foregroundColor(.white)
